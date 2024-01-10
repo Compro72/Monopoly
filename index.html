@@ -131,12 +131,12 @@ const createScene =  () => {
 	
 	boxMeshes.push(box);
 	
-	BoxX = 0;
-	BoxY = 2;
-	BoxZ = 0;
-	BoxSize = new CANNON.Vec3(2, 2, 2);
-	BoxShape = new CANNON.Box(BoxSize);
-	BoxBody = new CANNON.Body({ mass: 1000 });
+	let BoxX = 0;
+	let BoxY = 2;
+	let BoxZ = 0;
+	let BoxSize = new CANNON.Vec3(2, 2, 2);
+	let BoxShape = new CANNON.Box(BoxSize);
+	let BoxBody = new CANNON.Body({ mass: 1000 });
 	BoxBody.addShape(BoxShape);
 	world.add(BoxBody);
 	BoxBody.position.set(BoxX, BoxY, BoxZ);
