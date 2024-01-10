@@ -124,6 +124,17 @@ const createScene =  () => {
 	box.material = mat;
 	box.position.y = 3;
 
+	BoxX = 0;
+	BoxY = 2;
+	BoxZ = 0;
+	BoxSize = new CANNON.Vec3(2, 2, 2);
+	BoxShape = new CANNON.Box(BoxSize);
+	BoxBody = new CANNON.Body({ mass: 1000 });
+	BoxBody.addShape(BoxShape);
+	world.add(BoxBody);
+	BoxBody.position.set(BoxX, BoxY,0);
+	boxes.push(BoxBody);
+
 	return scene;
 }
 
