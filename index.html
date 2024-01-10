@@ -60,8 +60,9 @@ html, body {
 <script>
 
 var canvas = document.getElementById("renderCanvas");
-let boxMeshes=[];
+let boxMeshes=[], boxes=[];
 
+initCannon();
 
 let startRenderLoop = function (engine, canvas) {
 	engine.runRenderLoop(function () {
