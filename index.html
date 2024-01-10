@@ -119,7 +119,7 @@ const createScene =  () => {
 
 	const box = BABYLON.MeshBuilder.CreateBox("box", options);
 	box.material = mat;
-
+	box.position.y = 3;
 
 	return scene;
 }
