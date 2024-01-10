@@ -123,7 +123,9 @@ const createScene =  () => {
 	const box = BABYLON.MeshBuilder.CreateBox("box", options);
 	box.material = mat;
 	box.position.y = 3;
-
+	
+	boxMeshes.push(BoxMesh);
+	
 	BoxX = 0;
 	BoxY = 2;
 	BoxZ = 0;
@@ -132,7 +134,7 @@ const createScene =  () => {
 	BoxBody = new CANNON.Body({ mass: 1000 });
 	BoxBody.addShape(BoxShape);
 	world.add(BoxBody);
-	BoxBody.position.set(BoxX, BoxY,0);
+	BoxBody.position.set(BoxX, BoxY, BoxZ);
 	boxes.push(BoxBody);
 
 	return scene;
