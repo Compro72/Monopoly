@@ -90,6 +90,7 @@ const scene = new BABYLON.Scene(engine);
 
 	ground = BABYLON.MeshBuilder.CreateGround("ground", {width:10, height:10});
 	ground.material = groundMat;
+	ground.position.y = 0;
 
 
 	const mat = new BABYLON.StandardMaterial("mat");
