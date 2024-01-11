@@ -135,9 +135,9 @@ const scene = new BABYLON.Scene(engine);
 	const boxPhysMat = new CANNON.Material();
 
 	boxBody = new CANNON.Body({
-		mass: 0.001,
+		mass: 1,
 		shape: new CANNON.Box(new CANNON.Vec3(0.0625, 0.0625, 0.0625)),
-		position: new CANNON.Vec3(0, 3, 0),
+		position: new CANNON.Vec3(0, 6, 0),
 		material: boxPhysMat
 	});
 	world.addBody(boxBody);
