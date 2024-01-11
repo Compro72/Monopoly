@@ -56,23 +56,25 @@ const createScene = async function () {
 	// Babylon Scene--------------------------------------------------------------------------------------------
 	const scene = new BABYLON.Scene(engine);
 
+	
 	// Camera---------------------------------------------------------------------------------------------------
 	const camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 2.5, 10, new BABYLON.Vector3(0, 0, 0));
   	camera.attachControl(canvas, true);
 
-	// Liight---------------------------------------------------------------------------------------------------
+	
+	// Light---------------------------------------------------------------------------------------------------
 	const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 1, 0));
+
 	
 	// Board----------------------------------------------------------------------------------------------------
-	
 	const groundMat = new BABYLON.StandardMaterial("groundMat");
 	groundMat.diffuseTexture = new BABYLON.Texture("https://miro.medium.com/v2/resize:fit:1200/1*vBf3JmpboL86C1Q12ZECjw.jpeg");
 
 	let ground = BABYLON.MeshBuilder.CreateGround("ground", {width:10, height:10});
 	ground.material = groundMat;
 
+	
 	// Dice-------------------------------------------------------------------------------------------------------
-
 	const mat = new BABYLON.StandardMaterial("mat");
 	const texture = new BABYLON.Texture("diceNumbers.png");
 	mat.diffuseTexture = texture;
@@ -96,8 +98,8 @@ const createScene = async function () {
 	box.material = mat;
 	box.position.y = 5;
 
-	// initialize plugin-----------------------------------------------------------------------------------------
 	
+	// initialize plugin-----------------------------------------------------------------------------------------
 	const havokInstance = await HavokPhysics();
 	// pass the engine to the plugin
 	const hk = new BABYLON.HavokPlugin(true, havokInstance);
