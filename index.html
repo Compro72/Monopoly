@@ -59,22 +59,12 @@ html, body {
 
 <script>
 
-var canvas = document.getElementById("renderCanvas");
-let boxMeshes=[], boxes=[];
-
-initCannon();
-
 let startRenderLoop = function (engine, canvas) {
 	engine.runRenderLoop(function () {
 		if (sceneToRender && sceneToRender.activeCamera) {
 			sceneToRender.render();
 		}
 	});
-	for(i=0; i<boxes.length; i++){
-      		boxMeshes[i].position.copy(boxes[i].position);
-      		boxMeshes[i].quaternion.copy(boxes[i].quaternion);
-		console.log(boxMeshes, boxes);
-	}
 }
 
 
@@ -90,8 +80,6 @@ let createDefaultEngine = function() { return new BABYLON.Engine(canvas, true, {
 const createScene =  () => {
 	let i;
 	const scene = new BABYLON.Scene(engine);
-
-	scene.enablePhysics(new BABYLON.Vector3(0,-30,0), new BABYLON.CannonJSPlugin());
 
    /**** Set camera and light *****/
 	const camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 2.5, 10, new BABYLON.Vector3(0, 0, 0));
@@ -128,62 +116,8 @@ const createScene =  () => {
 	const box = BABYLON.MeshBuilder.CreateBox("box", options);
 	box.material = mat;
 	box.position.y = 3;
-	
-	boxMeshes.push(box);
-	
-	let BoxX = 0;
-	let BoxY = 2;
-	let BoxZ = 0;
-	let BoxSize = new CANNON.Vec3(2, 2, 2);
-	let BoxShape = new CANNON.Box(BoxSize);
-	let BoxBody = new CANNON.Body({ mass: 1000 });
-	BoxBody.addShape(BoxShape);
-	world.add(BoxBody);
-	BoxBody.position.set(BoxX, BoxY, BoxZ);
-	boxes.push(BoxBody);
 
 	return scene;
-}
-
-
-function initCannon() {
-// Setup our world
-   world = new CANNON.World();
-   world.quatNormalizeSkip = 0;
-   world.quatNormalizeFast = false;
-
-	let solver = new CANNON.GSSolver();
-
-   world.defaultContactMaterial.contactEquationStiffness = 1e9;
-   world.defaultContactMaterial.contactEquationRelaxation = 4;
-
-   solver.iterations = 7;
-   solver.tolerance = 0.1;
-   let split = true;
-   if(split)
-      world.solver = new CANNON.SplitSolver(solver);
-      else
-      world.solver = solver;
-
-   world.gravity.set(0,-20,0);
-   world.broadphase = new CANNON.NaiveBroadphase();
-
-   // Create a slippery material (friction coefficient = 0.0)
-   physicsMaterial = new CANNON.Material("slipperyMaterial");
-   let physicsContactMaterial = new CANNON.ContactMaterial(physicsMaterial,
-                                                                        physicsMaterial,
-                                                                        0.0, // friction coefficient
-                                                                        0.3  // restitution
-                                                                        );
-   // We must add the contact materials to the world
-   world.addContactMaterial(physicsContactMaterial);
-
-   // Create a plane
-   let groundShape = new CANNON.Plane();
-   let groundBody = new CANNON.Body({ mass: 0 });
-   groundBody.addShape(groundShape);
-   groundBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1,0,0),-Math.PI/2);
-   world.add(groundBody);
 }
 	
 
