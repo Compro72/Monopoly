@@ -157,6 +157,10 @@ const scene = new BABYLON.Scene(engine);
 
 function animate() {
 	world.step(timeStep);
+
+	box.position.x = boxBody.position.x;
+	box.position.y = boxBody.position.y;
+	box.position.z = boxBody.position.z;
 	
 	console.log(box.position);
 	console.log(boxBody.position);
