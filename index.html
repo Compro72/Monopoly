@@ -48,9 +48,8 @@
     <div id="canvasZone"><canvas id="renderCanvas"></canvas></div>
 <script>
 
-const world = new CANNON.World({
-	gravity: new CANNON.Vec3(0, -9.81, 0)
-});
+const world = new CANNON.World();
+world.gravity = new CANNON.Vec3(0, -9.81, 0);
 
 const timeStep = 1 / 60;
 
