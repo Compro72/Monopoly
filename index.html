@@ -90,8 +90,6 @@ const scene = new BABYLON.Scene(engine);
 
 	ground = BABYLON.MeshBuilder.CreateGround("ground", {width:10, height:10});
 	ground.material = groundMat;
-	ground.position.y = 0;
-
 
 	const mat = new BABYLON.StandardMaterial("mat");
 	const texture = new BABYLON.Texture("diceNumbers.png");
@@ -114,8 +112,6 @@ const scene = new BABYLON.Scene(engine);
 
 	box = BABYLON.MeshBuilder.CreateBox("box", options);
 	box.material = mat;
-	box.position.y = 3;
-
 
 	// ------------------------------------------CANNON------------------------------------------ //
 
