@@ -77,7 +77,7 @@ const scene = new BABYLON.Scene(engine);
 	const groundMat = new BABYLON.StandardMaterial("groundMat");
 	groundMat.diffuseTexture = new BABYLON.Texture("https://miro.medium.com/v2/resize:fit:1200/1*vBf3JmpboL86C1Q12ZECjw.jpeg");
 
-	ground = BABYLON.MeshBuilder.CreateGround("ground", {width:10, height:10});
+	let ground = BABYLON.MeshBuilder.CreateGround("ground", {width:10, height:10});
 	ground.material = groundMat;
 
 	const mat = new BABYLON.StandardMaterial("mat");
@@ -99,7 +99,7 @@ const scene = new BABYLON.Scene(engine);
 		size: 0.25
 	};
 
-	box = BABYLON.MeshBuilder.CreateBox("box", options);
+	let box = BABYLON.MeshBuilder.CreateBox("box", options);
 	box.material = mat;
 
 	return scene;
