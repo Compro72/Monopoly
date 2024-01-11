@@ -53,7 +53,7 @@ const canvas = document.getElementById("renderCanvas");
 const engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true, disableWebGL2Support: false });
 		
 const createScene = async function () {
-	// This creates a basic Babylon Scene object (non-mesh)
+	// Babylon Scene--------------------------------------------------------------------------------------------
 	const scene = new BABYLON.Scene(engine);
 
 	const camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 2.5, 10, new BABYLON.Vector3(0, 0, 0));
@@ -89,7 +89,7 @@ const createScene = async function () {
 		size: 0.25
 	};
 
-	let box = BABYLON.MeshBuilder.CreateBox("box", options);
+	let box = BABYLON.MeshBuilder.CreateBox("box", options, scene);
 	box.material = mat;
 	box.position.y = 5;
 
