@@ -142,9 +142,6 @@ const scene = new BABYLON.Scene(engine);
 	});
 	world.addBody(boxBody);
 
-	boxBody.angularVelocity.set(0, 10, 0);
-	boxBody.angularDamping = 0.5;
-
 	const groundBoxContactMat = new CANNON.ContactMaterial(
 		groundPhysMat,
 		boxPhysMat,
