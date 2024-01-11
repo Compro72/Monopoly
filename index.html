@@ -53,6 +53,12 @@ const world = new CANNON.World({
 });
 
 const timeStep = 1 / 60;
+
+let box;
+let boxBody;
+let ground;
+let groundBody;
+	
 	
 var canvas = document.getElementById("renderCanvas");
 
@@ -83,7 +89,7 @@ const scene = new BABYLON.Scene(engine);
 	const groundMat = new BABYLON.StandardMaterial("groundMat");
 	groundMat.diffuseTexture = new BABYLON.Texture("https://miro.medium.com/v2/resize:fit:1200/1*vBf3JmpboL86C1Q12ZECjw.jpeg");
 
-	const ground = BABYLON.MeshBuilder.CreateGround("ground", {width:10, height:10});
+	ground = BABYLON.MeshBuilder.CreateGround("ground", {width:10, height:10});
 	ground.material = groundMat;
 
 
@@ -106,7 +112,7 @@ const scene = new BABYLON.Scene(engine);
 		size: 0.25
 	};
 
-	const box = BABYLON.MeshBuilder.CreateBox("box", options);
+	box = BABYLON.MeshBuilder.CreateBox("box", options);
 	box.material = mat;
 	box.position.y = 3;
 
@@ -115,7 +121,7 @@ const scene = new BABYLON.Scene(engine);
 
 	const groundPhysMat = new CANNON.Material();
 	
-	const groundBody = new CANNON.Body({
+	groundBody = new CANNON.Body({
 		//shape: new CANNON.Plane(),
     		//mass: 10
     		shape: new CANNON.Box(new CANNON.Vec3(15, 15, 0.1)),
@@ -127,7 +133,7 @@ const scene = new BABYLON.Scene(engine);
 
 	const boxPhysMat = new CANNON.Material();
 
-	const boxBody = new CANNON.Body({
+	boxBody = new CANNON.Body({
 		mass: 1,
 		shape: new CANNON.Box(new CANNON.Vec3(1, 1, 1)),
 		position: new CANNON.Vec3(1, 20, 0),
