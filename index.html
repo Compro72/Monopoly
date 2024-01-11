@@ -73,7 +73,7 @@ var scene = null;
 var sceneToRender = null;
 
 
-let createDefaultEngine = function() { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); 
+let createDefaultEngine = function() { return new BABYLON.Engine("renderCanvas", true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); 
 };
 
 
