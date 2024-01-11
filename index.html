@@ -46,27 +46,27 @@
     </head>
 <body>
     <div id="canvasZone"><canvas id="renderCanvas"></canvas></div>
-    <script>
-        var canvas = document.getElementById("renderCanvas");
+<script>
+var canvas = document.getElementById("renderCanvas");
 
-        var startRenderLoop = function (engine, canvas) {
-            engine.runRenderLoop(function () {
-                if (sceneToRender && sceneToRender.activeCamera) {
+var startRenderLoop = function (engine, canvas) {
+	engine.runRenderLoop(function () {
+        	if (sceneToRender && sceneToRender.activeCamera) {
                     sceneToRender.render();
                 }
-		console.log(13);
-            });
-        }
+		animate();
+	});
+}
 
-        var engine = null;
-        var scene = null;
-        var sceneToRender = null;
-        var createDefaultEngine = function() { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
+var engine = null;
+var scene = null;
+var sceneToRender = null;
+var createDefaultEngine = function() { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
 	
-        var createScene = function () {
-	let i;
-	const scene = new BABYLON.Scene(engine);
-
+var createScene = function () {
+let i;
+		
+const scene = new BABYLON.Scene(engine);
 	/**** Set camera and light *****/
 	const camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 2.5, 10, new BABYLON.Vector3(0, 0, 0));
 	camera.attachControl(canvas, true);
@@ -121,34 +121,67 @@
 	world.addBody(groundBody);
 	groundBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
 
-		
+	const boxPhysMat = new CANNON.Material();
+
+	const boxBody = new CANNON.Body({
+		mass: 1,
+		shape: new CANNON.Box(new CANNON.Vec3(1, 1, 1)),
+		position: new CANNON.Vec3(1, 20, 0),
+		material: boxPhysMat
+	});
+	world.addBody(boxBody);
+
+	boxBody.angularVelocity.set(0, 10, 0);
+	boxBody.angularDamping = 0.5;
+
+	const groundBoxContactMat = new CANNON.ContactMaterial(
+		groundPhysMat,
+		boxPhysMat,
+		{friction: 0.04}
+	);
+
+	world.addContactMaterial(groundBoxContactMat);
+	
 
 	return scene;
 };
-                window.initFunction = async function() {
-                    
-                    
-                    
-                    var asyncEngineCreation = async function() {
-                        try {
-                        return createDefaultEngine();
-                        } catch(e) {
+
+function animate() {
+	world.step(timeStep);
+
+	ground.position.copy(groundBody.position);
+	ground.quaternion.copy(groundBody.quaternion);
+	console.log(groundBody);
+
+	box.position.copy(boxBody.position);
+	box.quaternion.copy(boxBody.quaternion);
+	
+}
+
+
+window.initFunction = async function() {
+	var asyncEngineCreation = async function() {
+		try {
+                	return createDefaultEngine();
+                } catch(e) {
                         console.log("the available createEngine function failed. Creating the default engine instead");
                         return createDefaultEngine();
-                        }
-                    }
-
-                    window.engine = await asyncEngineCreation();
+                }
+        }
+        window.engine = await asyncEngineCreation();
         if (!engine) throw 'engine should not be null.';
         startRenderLoop(engine, canvas);
-        window.scene = createScene();};
-        initFunction().then(() => {sceneToRender = scene                    
-        });
+        window.scene = createScene();
+};
 
-        // Resize
-        window.addEventListener("resize", function () {
-            engine.resize();
-        });
-    </script>
+initFunction().then(() => {sceneToRender = scene});
+
+// Resize
+window.addEventListener("resize", function () {
+	engine.resize();
+});
+
+
+</script>
 </body>
 </html>
