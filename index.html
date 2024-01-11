@@ -102,58 +102,8 @@ const scene = new BABYLON.Scene(engine);
 	box = BABYLON.MeshBuilder.CreateBox("box", options);
 	box.material = mat;
 
-	// ------------------------------------------CANNON------------------------------------------ //
-
-	const groundPhysMat = new CANNON.Material();
-	
-	groundBody = new CANNON.Body({
-		//shape: new CANNON.Plane(),
-    		//mass: 10
-    		shape: new CANNON.Box(new CANNON.Vec3(15, 15, 0.1)),
-		position: new CANNON.Vec3(0, 0, 0),
-   		type: CANNON.Body.STATIC,
-   		material: groundPhysMat
-	});
-	world.addBody(groundBody);
-	groundBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
-
-	const boxPhysMat = new CANNON.Material();
-
-	boxBody = new CANNON.Body({
-		mass: 1,
-		shape: new CANNON.Box(new CANNON.Vec3(0.0625, 0.0625, 0.0625)),
-		position: new CANNON.Vec3(0, 3, 0),
-		material: boxPhysMat
-	});
-	world.addBody(boxBody);
-
-	const groundBoxContactMat = new CANNON.ContactMaterial(
-		groundPhysMat,
-		boxPhysMat,
-		{friction: 0.04}
-	);
-
-	world.addContactMaterial(groundBoxContactMat);
-	
-
 	return scene;
 };
-
-function animate() {
-	world.step(timeStep);
-
-	box.position.x = boxBody.position.x;
-	box.position.y = boxBody.position.y;
-	box.position.z = boxBody.position.z;
-
-	ground.position.x = groundBody.position.x;
-	ground.position.y = groundBody.position.y;
-	ground.position.z = groundBody.position.z;
-	
-	console.log(box.rotation);
-	console.log(boxBody);
-	console.log(world);
-}
 
 
 window.initFunction = async function() {
