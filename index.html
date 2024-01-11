@@ -56,8 +56,11 @@ const createScene = async function () {
 	// Babylon Scene--------------------------------------------------------------------------------------------
 	const scene = new BABYLON.Scene(engine);
 
+	// Camera---------------------------------------------------------------------------------------------------
 	const camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 2.5, 10, new BABYLON.Vector3(0, 0, 0));
   	camera.attachControl(canvas, true);
+
+	// Liight---------------------------------------------------------------------------------------------------
 	const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 1, 0));
 	
 	// Board----------------------------------------------------------------------------------------------------
