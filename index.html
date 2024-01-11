@@ -51,6 +51,9 @@
 	 
 const canvas = document.getElementById("renderCanvas");
 const engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true, disableWebGL2Support: false });
+
+
+let box;
 		
 const createScene = async function () {
 	// Babylon Scene--------------------------------------------------------------------------------------------
@@ -94,7 +97,7 @@ const createScene = async function () {
 		size: 0.25
 	};
 
-	let box = BABYLON.MeshBuilder.CreateBox("box", options, scene);
+	box = BABYLON.MeshBuilder.CreateBox("box", options, scene);
 	box.material = mat;
 	box.position.y = Math.floor(Math.random() * (10 - 3 + 1)) + 3;
 	box.rotation.x = Math.floor(Math.random() * (360 - 0 + 1)) + 0;
@@ -118,17 +121,22 @@ const createScene = async function () {
 	return scene;
 };
 
-      createScene().then((scene) => {
-        engine.runRenderLoop(function () {
-          if (scene) {
-            scene.render();
-          }
-        });
-      });
-      // Resize
-      window.addEventListener("resize", function () {
-        engine.resize();
-      });
-    </script>
-  </body>
+createScene().then((scene) => {
+	engine.runRenderLoop(function () {
+		if (scene) {
+			scene.render();
+		}
+		console.log(box.rotation.x, box.rotation.y, box.rotation.z)
+	});
+});
+
+// Resize
+window.addEventListener("resize", function () {
+	engine.resize();
+});
+	
+</script>
+	
+</body>
+
 </html>
