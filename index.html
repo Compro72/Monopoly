@@ -101,6 +101,7 @@ const scene = new BABYLON.Scene(engine);
 
 	let box = BABYLON.MeshBuilder.CreateBox("box", options);
 	box.material = mat;
+	box.position.y = 5;
 
 	return scene;
 };
