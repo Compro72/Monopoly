@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-        <title>Babylon.js sample code</title>
+        <title>Monopoly</title>
 
         <!-- Babylon.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
@@ -104,6 +104,14 @@
 	const box = BABYLON.MeshBuilder.CreateBox("box", options);
 	box.material = mat;
 	box.position.y = 3;
+
+
+	const world = new CANNON.World({
+    		gravity: new CANNON.Vec3(0, -9.81, 0)
+	});
+
+	const groundPhysMat = new CANNON.Material();
+	
 
 	return scene;
 };
