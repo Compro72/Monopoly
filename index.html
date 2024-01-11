@@ -103,6 +103,21 @@ const scene = new BABYLON.Scene(engine);
 	box.material = mat;
 	box.position.y = 5;
 
+	
+        // initialize plugin
+        const havokInstance = await HavokPhysics();
+        // pass the engine to the plugin
+        const hk = new BABYLON.HavokPlugin(true, havokInstance);
+        // enable physics in the scene with a gravity
+        scene.enablePhysics(new BABYLON.Vector3(0, -9.8, 0), hk);
+
+        // Create a box shape and the associated body. Size will be determined automatically.
+        const boxAggregate = new BABYLON.PhysicsAggregate(box, BABYLON.PhysicsShapeType.BOX, { mass: 1, restitution: 0.75 }, scene);
+
+        // Create a static box shape.
+        const groundAggregate = new BABYLON.PhysicsAggregate(ground, BABYLON.PhysicsShapeType.BOX, { mass: 0 }, scene);
+
+	
 	return scene;
 };
 
