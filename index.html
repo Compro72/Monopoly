@@ -62,7 +62,6 @@ body {
 	 
 const canvas = document.getElementById("renderCanvas");
 const engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true, disableWebGL2Support: false });
-const start = Date.now()
 
 
 let box;
@@ -158,13 +157,13 @@ createScene().then((scene) => {
 		if (scene) {
 			scene.render();
 		}
-		rotation = box.rotationQuaternion.toEulerAngles()
+		rotation = box.rotationQuaternion.toEulerAngles();
 		if(false) {
 			if(Math.round(rotation.x*100)/100 == 0 && Math.round(rotation.z*100)/100 == 0) {
-				window.alert("5")
+				window.alert("5");
 			}
 		}
-	     	console.log(Date.now() - start)
+		console.log(Math.round(rotation.x*100)/100, box.position, Math.round(rotation.z*100)/100);
 	});
 });
 
