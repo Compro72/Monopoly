@@ -66,6 +66,7 @@ const engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, s
 
 let box;
 let rotation;
+let prevPos;
 
 const roundNearest = (value, nearest) => Math.round(value / nearest) * nearest;
 		
@@ -158,13 +159,15 @@ createScene().then((scene) => {
 			scene.render();
 		}
 		rotation = box.rotationQuaternion.toEulerAngles();
-		if(false) {
+		if(prevPos == box.position) {
 			if(Math.round(rotation.x*100)/100 == 0 && Math.round(rotation.z*100)/100 == 0) {
 				window.alert("5");
 			}
 		}
+		
+		prevPos = box.position;
 		console.log(Math.round(rotation.x*100)/100, Math.round(rotation.y*100)/100, Math.round(rotation.z*100)/100);
-		console.log(box.position)
+		console.log(box.position);
 	});
 });
 
