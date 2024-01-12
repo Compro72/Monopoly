@@ -116,7 +116,7 @@ const createScene = async function () {
 	box.material = mat;
 	box.position.y = Math.floor(Math.random() * (5 - 5 + 1)) + 5;
 	box.position.y = 1;
-	box.rotation.x = 0;
+	box.rotation.x = 90;
 	box.rotation.y = 0;
 	box.rotation.z = 0;
 
@@ -139,7 +139,7 @@ const createScene = async function () {
    	scene.enablePhysics(new BABYLON.Vector3(0, -9.8, 0), hk);
 	
 	// Create a box shape and the associated body. Size will be determined automatically.
-	const boxAggregate = new BABYLON.PhysicsAggregate(box, BABYLON.PhysicsShapeType.BOX, { mass: 1, restitution: 0.75 }, scene);
+	//const boxAggregate = new BABYLON.PhysicsAggregate(box, BABYLON.PhysicsShapeType.BOX, { mass: 1, restitution: 0.75 }, scene);
 
 	// Create a static box shape.
 	const groundAggregate = new BABYLON.PhysicsAggregate(ground, BABYLON.PhysicsShapeType.BOX, { mass: 0 }, scene);
