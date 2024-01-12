@@ -121,11 +121,8 @@ const createScene = async function () {
 
 	// Shadows---------------------------------------------------------------------------------------------------
 	var shadowGenerator = new BABYLON.ShadowGenerator(1024, light);
-	//shadowGenerator.bias = 0.0001;
-	light.shadowMaxZ = 130;
-	light.shadowMinZ = 10;
-	shadowGenerator.useContactHardeningShadow = true;
-	shadowGenerator.setDarkness(0.5);
+	shadowGenerator.addShadowCaster(torus);
+	shadowGenerator.useExponentialShadowMap = true;
 
 	ground.receiveShadows = true;
 
