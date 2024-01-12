@@ -65,6 +65,7 @@ const engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, s
 
 
 let box;
+let box1;
 let euler;
 
 const roundNearest = (value, nearest) => Math.round(value / nearest) * nearest;
@@ -125,6 +126,9 @@ const createScene = async function () {
 	box.rotation.y = 0;
 	box.rotation.z = 0;
 
+	
+	box1 = BABYLON.MeshBuilder.CreateBox("box", options, scene);
+
 
 	// Shadows---------------------------------------------------------------------------------------------------
 	var shadowGenerator = new BABYLON.ShadowGenerator(1024, light1);
@@ -159,6 +163,7 @@ createScene().then((scene) => {
 		}
 		euler = box.rotationQuaternion.toEulerAngles()
 		console.log(euler)
+		
 	});
 });
 
