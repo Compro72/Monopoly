@@ -163,7 +163,7 @@ createScene().then((scene) => {
 			scene.render();
 		}
 		rotation = box.rotationQuaternion.toEulerAngles()
-		console.log(rotation)
+		console.log(Math.floor(rotation.x), Math.floor(rotation.y), Math.floor(rotation.z))
 		box1.rotation = rotation;
 	});
 });
