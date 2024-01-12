@@ -77,11 +77,13 @@ const createScene = async function () {
 
 	
 	// Light---------------------------------------------------------------------------------------------------
-	var light = new BABYLON.DirectionalLight("light", new BABYLON.Vector3(-1, -2, -1), scene);
-	light.position = new BABYLON.Vector3(0, 40, 20);
-	light.intensity = 1;
-	light.shadowMaxZ = 130;
-	light.shadowMinZ = 10;
+	let light1 = new BABYLON.DirectionalLight("light", new BABYLON.Vector3(-1, -2, -1), scene);
+	light1.position = new BABYLON.Vector3(0, 40, 20);
+	light1.intensity = 1;
+	light1.shadowMaxZ = 130;
+	light1.shadowMinZ = 10;
+
+	let light2 = new BABYLON.HemisphericLight("HemiLight", new BABYLON.Vector3(0, 1, 0), scene);
 
 	
 	// Board----------------------------------------------------------------------------------------------------
@@ -122,7 +124,7 @@ const createScene = async function () {
 
 
 	// Shadows---------------------------------------------------------------------------------------------------
-	var shadowGenerator = new BABYLON.ShadowGenerator(1024, light);
+	var shadowGenerator = new BABYLON.ShadowGenerator(1024, light1);
 	shadowGenerator.useContactHardeningShadow = true;
 	shadowGenerator.setDarkness(0.25);
 	shadowGenerator.addShadowCaster(box);
