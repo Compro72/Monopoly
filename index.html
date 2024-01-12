@@ -65,6 +65,8 @@ const engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, s
 
 
 let box;
+
+const roundNearest = (value, nearest) => Math.round(value / nearest) * nearest;
 		
 const createScene = async function () {
 	// Babylon Scene--------------------------------------------------------------------------------------------
