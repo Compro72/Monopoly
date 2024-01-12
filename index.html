@@ -80,6 +80,8 @@ const createScene = async function () {
 	var light = new BABYLON.DirectionalLight("light", new BABYLON.Vector3(-1, -2, -1), scene);
 	light.position = new BABYLON.Vector3(0, 40, 20);
 	light.intensity = 1;
+	light.shadowMaxZ = 130;
+	light.shadowMinZ = 10;
 
 	
 	// Board----------------------------------------------------------------------------------------------------
