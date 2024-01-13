@@ -159,12 +159,12 @@ createScene().then((scene) => {
 			scene.render();
 		}
 		rotation = box.rotationQuaternion.toEulerAngles();
-		if(prevPosX === box.position.x && prevPosY === box.position.y && prevPosZ === box.position.z) {
+		if(prevPosX === box.position.x && prevPosY === box.position.y && prevPosZ === box.position.z && prevRotX === rotation.x && prevRotY === rotation.y && prevRotZ === rotation.z) {
 			if(Math.round(rotation.x*100)/100 == 0 && Math.round(rotation.z*100)/100 == 0) {
 				window.alert("5");
 			}
 		}
-		console.log(prevPosX === box.position.x && prevPosY === box.position.y && prevPosZ === box.position.z);
+		console.log(prevPosX === box.position.x && prevPosY === box.position.y && prevPosZ === box.position.z && prevRotX === rotation.x && prevRotY === rotation.y && prevRotZ === rotation.z);
 		prevPosX = box.position.x;
 		prevPosY = box.position.y;
 		prevPosZ = box.position.z;
