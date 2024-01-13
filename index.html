@@ -67,6 +67,7 @@ const engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, s
 let box;
 let rotation;
 let prevPosX, prevPosY, prevPosZ, prevRotX, prevRotY, prevRotZ;
+let done = 0;
 
 const roundNearest = (value, nearest) => Math.round(value / nearest) * nearest;
 		
@@ -159,19 +160,25 @@ createScene().then((scene) => {
 			scene.render();
 		}
 		rotation = box.rotationQuaternion.toEulerAngles();
-		if(prevPosX === box.position.x && prevPosY === box.position.y && prevPosZ === box.position.z && prevRotX === rotation.x && prevRotY === rotation.y && prevRotZ === rotation.z) {
+		if(prevPosX === box.position.x && prevPosY === box.position.y && prevPosZ === box.position.z && prevRotX === rotation.x && prevRotY === rotation.y && prevRotZ === rotation.z && done=0) {
 			if(Math.round(rotation.x*100)/100 == -1.57 && Math.round(rotation.z*100)/100 == 0) {
 				window.alert("1");
+				done++
 			} else if(Math.round(rotation.x*100)/100 == 1.57 && Math.round(rotation.z*100)/100 == 0) {
 				window.alert("2");
+				done++
 			} else if(Math.round(rotation.x*100)/100 == 0 && Math.round(rotation.z*100)/100 == 1.57) {
 				window.alert("3");
+				done++
 			} else if(Math.round(rotation.x*100)/100 == 0 && Math.round(rotation.z*100)/100 == -1.57) {
 				window.alert("4");
+				done++
 			} else if(Math.round(rotation.x*100)/100 == 0 && Math.round(rotation.z*100)/100 == 0) {
 				window.alert("5");
+				done++
 			} else if(Math.round(rotation.x*100)/100 == 0 && Math.round(rotation.z*100)/100 == 3.14||-3.14) {
 				window.alert("6");
+				done++
 			}
 		}
 		prevPosX = box.position.x;
