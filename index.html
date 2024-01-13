@@ -125,7 +125,6 @@ const createScene = async function () {
 	box.rotation.x = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
 	box.rotation.y = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
 	box.rotation.z = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
-	console.log(Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI);
 
 
 	// Shadows---------------------------------------------------------------------------------------------------
@@ -165,7 +164,6 @@ createScene().then((scene) => {
 				window.alert("5");
 			}
 		}
-		console.log(prevPosX === box.position.x && prevPosY === box.position.y && prevPosZ === box.position.z && prevRotX === rotation.x && prevRotY === rotation.y && prevRotZ === rotation.z);
 		prevPosX = box.position.x;
 		prevPosY = box.position.y;
 		prevPosZ = box.position.z;
