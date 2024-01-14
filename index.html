@@ -155,30 +155,31 @@ const createScene = async function () {
 
 	// Set Properties
 	const wallProperties = {
-		width: 10,
+		width: 7.4,
 		height: 10,
 		depth: 0.01
 	}
 
 	// Wall 1
-	wall1 = BABYLON.MeshBuilder.CreateBox("box", wallProperties, scene);
+	wall1 = BABYLON.MeshBuilder.CreateBox("wall1", wallProperties, scene);
 	wall1.material = mat;
-	wall1.position.z = 3.8;
-/*
+	wall1.position.z = 3.7;
+
 	// Wall 2
 	wall2 = BABYLON.MeshBuilder.CreateBox("wall2", wallProperties, scene);
-	wall2.position.x = 5;
+	wall2.rotation.y = Math.pi/2;
+	wall2.position.x = 3.7;
 
 	// Wall 3
 	wall3 = BABYLON.MeshBuilder.CreateGround("wall3", wallProperties, scene);
-	wall3.rotation.x = Math.pi/2;
-	wall3.position.z = 5;
+	wall3.material = mat;
+	wall3.position.z = -3.7;
 
 	// Wall 4
 	wall4 = BABYLON.MeshBuilder.CreateGround("wall4", wallProperties, scene);
-	wall4.rotation.z = Math.pi/2;
+	wall4.rotation.y = Math.pi/2;
 	wall4.position.x = -5;
-*/
+
 
 	// Shadows---------------------------------------------------------------------------------------------------
 	var shadowGenerator = new BABYLON.ShadowGenerator(1024, light1);
