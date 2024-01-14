@@ -63,18 +63,25 @@ body {
 const canvas = document.getElementById("renderCanvas");
 const engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true, disableWebGL2Support: false });
 
-
+// Dice
 let dice1;
 let dice2;
 let dice1Rotation, dice1Val;
 let dice2Rotation, dice2Val;
 let prevDice1PosX, prevDice1PosY, prevDice1PosZ, prevDice1RotX, prevDice1RotY, prevDice1RotZ;
 let prevDice2PosX, prevDice2PosY, prevDice2PosZ, prevDice2RotX, prevDice2RotY, prevDice2RotZ;
+
+// Walls
+let wall1;
+let wall2;
+let wall3;
+let wall4;
+
+// Other
 let done = 0;
 let total;
 
-const roundNearest = (value, nearest) => Math.round(value / nearest) * nearest;
-		
+
 const createScene = async function () {
 	// Babylon Scene--------------------------------------------------------------------------------------------
 	const scene = new BABYLON.Scene(engine);
@@ -117,15 +124,15 @@ const createScene = async function () {
 		faceUV[i] = new BABYLON.Vector4(i / columns, 0, (i + 1) / columns, 1 / rows);
 	}
 
-	// Set Options
-	const options = {
+	// Set Properties
+	const diceProperties = {
 		faceUV: faceUV,
 		wrap: true,
 		size: 0.25
 	};
 
 	// Dice 1
-	dice1 = BABYLON.MeshBuilder.CreateBox("box", options, scene);
+	dice1 = BABYLON.MeshBuilder.CreateBox("box", diceProperties, scene);
 	dice1.material = mat;
 	dice1.position.y = Math.floor(Math.random() * (5 - 5 + 1)) + 5;
 	dice1.position.y = Math.floor(Math.random() * (8 - 4 + 1)) + 4;
@@ -135,13 +142,36 @@ const createScene = async function () {
 
 
 	// Dice 2
-	dice2 = BABYLON.MeshBuilder.CreateBox("box", options, scene);
+	dice2 = BABYLON.MeshBuilder.CreateBox("box", diceProperties, scene);
 	dice2.material = mat;
 	dice2.position.y = Math.floor(Math.random() * (5 - 5 + 1)) + 5;
 	dice2.position.y = Math.floor(Math.random() * (8 - 4 + 1)) + 4;
 	dice2.rotation.x = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
 	dice2.rotation.y = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
 	dice2.rotation.z = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
+
+
+	// Walls-----------------------------------------------------------------------------------------------------
+
+	// Set Properties
+	const wallProperties = {
+		width:10,
+		height:10
+	}
+
+	// Wall 1
+	wall1 = BABYLON.MeshBuilder.CreateBox("wall1", wallProperties, scene);
+	wall1.rotation.z = Math.pi/2;
+
+	// Wall 2
+	wall2 = BABYLON.MeshBuilder.CreateBox("wall2", wallProperties, scene);
+
+	// Wall 3
+	wall3 = BABYLON.MeshBuilder.CreateBox("wall3", wallProperties, scene);
+	wall1.rotation.z = Math.pi/2;
+
+	// Wall 4
+	wall4 = BABYLON.MeshBuilder.CreateBox("wall4", wallProperties, scene);
 
 
 	// Shadows---------------------------------------------------------------------------------------------------
