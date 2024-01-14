@@ -156,6 +156,7 @@ const createScene = async function () {
 	// Wall 1
 	wall1 = BABYLON.MeshBuilder.CreateBox("wall1", {width: 7.4, height: 10, depth: 0.01}, scene);
 	wall1.position.z = 3.7;
+	wall1.isVisible = false;
 
 	// Wall 2
 	wall2 = BABYLON.MeshBuilder.CreateBox("wall2", {width: 0.01, height: 10, depth: 7.4}, scene);
