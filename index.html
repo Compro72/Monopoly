@@ -171,12 +171,12 @@ const createScene = async function () {
 	wall2.position.x = 3.7;
 
 	// Wall 3
-	wall3 = BABYLON.MeshBuilder.CreateGround("wall3", wallProperties, scene);
+	wall3 = BABYLON.MeshBuilder.CreateBox("wall3", wallProperties, scene);
 	wall3.material = mat;
 	wall3.position.z = -3.7;
 
 	// Wall 4
-	wall4 = BABYLON.MeshBuilder.CreateGround("wall4", wallProperties, scene);
+	wall4 = BABYLON.MeshBuilder.CreateBox("wall4", wallProperties, scene);
 	wall4.rotation.y = Math.pi/2;
 	wall4.position.x = -5;
 
