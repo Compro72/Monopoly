@@ -162,7 +162,7 @@ const createScene = async function () {
 
 	// Wall 1
 	wall1 = BABYLON.MeshBuilder.CreateBox("box", wallProperties, scene);
-	wall1.material = mat;
+	wall1.material = BABYLON.StandardMaterial("mat");
 	wall1.position.z = 3;
 /*
 	// Wall 2
