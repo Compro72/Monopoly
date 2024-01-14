@@ -64,7 +64,8 @@ const canvas = document.getElementById("renderCanvas");
 const engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true, disableWebGL2Support: false });
 
 
-let box;
+let box1;
+let box2;
 let rotation;
 let prevPosX, prevPosY, prevPosZ, prevRotX, prevRotY, prevRotZ;
 let done = 0;
@@ -119,20 +120,32 @@ const createScene = async function () {
 		size: 0.25
 	};
 
-	box = BABYLON.MeshBuilder.CreateBox("box", options, scene);
-	box.material = mat;
-	box.position.y = Math.floor(Math.random() * (5 - 5 + 1)) + 5;
-	box.position.y = Math.floor(Math.random() * (8 - 4 + 1)) + 4;
-	box.rotation.x = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
-	box.rotation.y = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
-	box.rotation.z = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
+	box1 = BABYLON.MeshBuilder.CreateBox("box", options, scene);
+	box1.material = mat;
+	box1.position.x = 2;
+	box1.position.y = Math.floor(Math.random() * (5 - 5 + 1)) + 5;
+	box1.position.y = Math.floor(Math.random() * (8 - 4 + 1)) + 4;
+	box1.rotation.x = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
+	box1.rotation.y = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
+	box1.rotation.z = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
+
+
+	box2 = BABYLON.MeshBuilder.CreateBox("box", options, scene);
+	box2.material = mat;
+	box2.position.x = 2;
+	box2.position.y = Math.floor(Math.random() * (5 - 5 + 1)) + 5;
+	box2.position.y = Math.floor(Math.random() * (8 - 4 + 1)) + 4;
+	box2.rotation.x = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
+	box2.rotation.y = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
+	box2.rotation.z = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
 
 
 	// Shadows---------------------------------------------------------------------------------------------------
 	var shadowGenerator = new BABYLON.ShadowGenerator(1024, light1);
 	shadowGenerator.useContactHardeningShadow = true;
 	shadowGenerator.setDarkness(0.25);
-	shadowGenerator.addShadowCaster(box);
+	shadowGenerator.addShadowCaster(box1);
+	shadowGenerator.addShadowCaster(box2);
 	shadowGenerator.useExponentialShadowMap = true;
 
 	ground.receiveShadows = true;
@@ -146,9 +159,10 @@ const createScene = async function () {
    	scene.enablePhysics(new BABYLON.Vector3(0, -9.8, 0), hk);
 	
 	// Create a box shape and the associated body. Size will be determined automatically.
-	const boxAggregate = new BABYLON.PhysicsAggregate(box, BABYLON.PhysicsShapeType.BOX, { mass: 1, restitution: 0.75 }, scene);
+	const box1Aggregate = new BABYLON.PhysicsAggregate(box1, BABYLON.PhysicsShapeType.BOX, { mass: 1, restitution: 0.75 }, scene);
+	const box2Aggregate = new BABYLON.PhysicsAggregate(box2, BABYLON.PhysicsShapeType.BOX, { mass: 1, restitution: 0.75 }, scene);
 
-	// Create a static box shape.
+	// Create a static plane shape.
 	const groundAggregate = new BABYLON.PhysicsAggregate(ground, BABYLON.PhysicsShapeType.BOX, { mass: 0 }, scene);
 
 	return scene;
@@ -159,34 +173,34 @@ createScene().then((scene) => {
 		if (scene) {
 			scene.render();
 		}
-		rotation = box.rotationQuaternion.toEulerAngles();
-		if(prevPosX === box.position.x && prevPosY === box.position.y && prevPosZ === box.position.z && prevRotX === rotation.x && prevRotY === rotation.y && prevRotZ === rotation.z && done==0) {
-			if(Math.round(rotation.x*100)/100 == -1.57 && Math.round(rotation.z*100)/100 == 0) {
+		box1Rotation = box1.rotationQuaternion.toEulerAngles();
+		if(prevPosX === box1.position.x && prevPosY === box1.position.y && prevPosZ === box1.position.z && prevRotX === rotation.x && prevRotY === rotation.y && prevRotZ === rotation.z && done==0) {
+			if(Math.round(box1rotation.x*100)/100 == -1.57 && Math.round(box1rotation.z*100)/100 == 0) {
 				window.alert("1");
 				done++
-			} else if(Math.round(rotation.x*100)/100 == 1.57 && Math.round(rotation.z*100)/100 == 0) {
+			} else if(Math.round(box1rotation.x*100)/100 == 1.57 && Math.round(box1rotation.z*100)/100 == 0) {
 				window.alert("2");
 				done++
-			} else if(Math.round(rotation.x*100)/100 == 0 && Math.round(rotation.z*100)/100 == 1.57) {
+			} else if(Math.round(box1rotation.x*100)/100 == 0 && Math.round(box1rotation.z*100)/100 == 1.57) {
 				window.alert("3");
 				done++
-			} else if(Math.round(rotation.x*100)/100 == 0 && Math.round(rotation.z*100)/100 == -1.57) {
+			} else if(Math.round(box1rotation.x*100)/100 == 0 && Math.round(box1rotation.z*100)/100 == -1.57) {
 				window.alert("4");
 				done++
-			} else if(Math.round(rotation.x*100)/100 == 0 && Math.round(rotation.z*100)/100 == 0) {
+			} else if(Math.round(box1rotation.x*100)/100 == 0 && Math.round(box1rotation.z*100)/100 == 0) {
 				window.alert("5");
 				done++
-			} else if(Math.round(rotation.x*100)/100 == 0 && Math.round(rotation.z*100)/100 == 3.14||-3.14) {
+			} else if(Math.round(box1rotation.x*100)/100 == 0 && Math.round(box1rotation.z*100)/100 == 3.14||-3.14) {
 				window.alert("6");
 				done++
 			}
 		}
-		prevPosX = box.position.x;
-		prevPosY = box.position.y;
-		prevPosZ = box.position.z;
-		prevRotX = rotation.x;
-		prevRotY = rotation.y;
-		prevRotZ = rotation.z;
+		prevPosX = box1.position.x;
+		prevPosY = box1.position.y;
+		prevPosZ = box1.position.z;
+		prevRotX = box1rotation.x;
+		prevRotY = box1rotation.y;
+		prevRotZ = box1rotation.z;
 	});
 });
 
