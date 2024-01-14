@@ -68,7 +68,8 @@ let box1;
 let box2;
 let box1Rotation;
 let box2Rotation;
-let prevPosX, prevPosY, prevPosZ, prevRotX, prevRotY, prevRotZ;
+let prevBox1PosX, prevBox1PosY, prevBox1PosZ, prevBox1RotX, prevBox1RotY, prevBox1RotZ;
+let prevBox2PosX, prevBox2PosY, prevBox2PosZ, prevBox2RotX, prevBox2RotY, prevBox2RotZ;
 let done = 0;
 
 const roundNearest = (value, nearest) => Math.round(value / nearest) * nearest;
@@ -102,28 +103,28 @@ const createScene = async function () {
 
 	
 	// Dice-------------------------------------------------------------------------------------------------------
+	
+	// Dice Texture
 	const mat = new BABYLON.StandardMaterial("mat");
 	const texture = new BABYLON.Texture("diceNumbers.png");
 	mat.diffuseTexture = texture;
-
 	var columns = 6;
 	var rows = 1;
-
 	const faceUV = new Array(6);
-
 	for (i = 0; i < 6; i++) {
 		faceUV[i] = new BABYLON.Vector4(i / columns, 0, (i + 1) / columns, 1 / rows);
 	}
 
+	// Set Options
 	const options = {
 		faceUV: faceUV,
 		wrap: true,
 		size: 0.25
 	};
 
+	// Dice 1
 	box1 = BABYLON.MeshBuilder.CreateBox("box", options, scene);
 	box1.material = mat;
-	box1.position.x = 2;
 	box1.position.y = Math.floor(Math.random() * (5 - 5 + 1)) + 5;
 	box1.position.y = Math.floor(Math.random() * (8 - 4 + 1)) + 4;
 	box1.rotation.x = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
@@ -131,9 +132,9 @@ const createScene = async function () {
 	box1.rotation.z = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
 
 
+	// Dice 2
 	box2 = BABYLON.MeshBuilder.CreateBox("box", options, scene);
 	box2.material = mat;
-	box2.position.x = 2;
 	box2.position.y = Math.floor(Math.random() * (5 - 5 + 1)) + 5;
 	box2.position.y = Math.floor(Math.random() * (8 - 4 + 1)) + 4;
 	box2.rotation.x = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
@@ -175,7 +176,8 @@ createScene().then((scene) => {
 			scene.render();
 		}
 		box1Rotation = box1.rotationQuaternion.toEulerAngles();
-		if(prevPosX === box1.position.x && prevPosY === box1.position.y && prevPosZ === box1.position.z && prevRotX === box1Rotation.x && prevRotY === box1Rotation.y && prevRotZ === box1Rotation.z && done==0) {
+		box2Rotation = box2.rotationQuaternion.toEulerAngles();
+		if(prevBox1PosX === box1.position.x && prevBox1PosY === box1.position.y && prevBox1PosZ === box1.position.z && prevBox1RotX === box1Rotation.x && prevBox1RotY === box1Rotation.y && prevBox1RotZ === box1Rotation.z && done==0) {
 			if(Math.round(box1Rotation.x*100)/100 == -1.57 && Math.round(box1Rotation.z*100)/100 == 0) {
 				window.alert("1");
 				done++
@@ -196,12 +198,19 @@ createScene().then((scene) => {
 				done++
 			}
 		}
-		prevPosX = box1.position.x;
-		prevPosY = box1.position.y;
-		prevPosZ = box1.position.z;
-		prevRotX = box1Rotation.x;
-		prevRotY = box1Rotation.y;
-		prevRotZ = box1Rotation.z;
+		prevBox1PosX = box1.position.x;
+		prevBox1PosY = box1.position.y;
+		prevBox1PosZ = box1.position.z;
+		prevBox1RotX = box1Rotation.x;
+		prevBox1RotY = box1Rotation.y;
+		prevBox1RotZ = box1Rotation.z;
+
+		prevBox2PosX = box2.position.x;
+		prevBox2PosY = box2.position.y;
+		prevBox2PosZ = box2.position.z;
+		prevBox2RotX = box2Rotation.x;
+		prevBox2RotY = box2Rotation.y;
+		prevBox2RotZ = box2Rotation.z;
 	});
 });
 
