@@ -153,28 +153,20 @@ const createScene = async function () {
 
 	// Walls-----------------------------------------------------------------------------------------------------
 
-	// Set Properties
-	const wallProperties = {
-		width: 7.4,
-		height: 10,
-		depth: 0.01
-	}
-
 	// Wall 1
-	wall1 = BABYLON.MeshBuilder.CreateBox("wall1", wallProperties, scene);
+	wall1 = BABYLON.MeshBuilder.CreateBox("wall1", {width: 7.4, height: 10, depth: 0.01}, scene);
 	wall1.position.z = 3.7;
 
 	// Wall 2
-	wall2 = BABYLON.MeshBuilder.CreateBox("wall2", wallProperties, scene);
-	wall2.rotation.y = Math.pi/2;
+	wall2 = BABYLON.MeshBuilder.CreateBox("wall2", {width: 0.01, height: 10, depth: 7.4}, scene);
 	wall2.position.x = 3.7;
 
 	// Wall 3
-	wall3 = BABYLON.MeshBuilder.CreateBox("wall3", wallProperties, scene);
+	wall3 = BABYLON.MeshBuilder.CreateBox("wall3", {width: 7.4, height: 10, depth: 0.01}, scene);
 	wall3.position.z = -3.7;
 
 	// Wall 4
-	wall4 = BABYLON.MeshBuilder.CreateBox("wall4", wallProperties, scene);
+	wall4 = BABYLON.MeshBuilder.CreateBox("wall4", {width: 0.01, height: 10, depth: 7.4}, scene);
 	wall4.position.x = -3.7;
 
 
