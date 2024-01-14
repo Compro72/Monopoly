@@ -156,11 +156,13 @@ const createScene = async function () {
 	// Set Properties
 	const wallProperties = {
 		width: 10,
-		height: 10
+		height: 10,
+		depth: 1
 	}
 
 	// Wall 1
-	wall1 = BABYLON.MeshBuilder.CreateBox("box", diceProperties, scene);
+	wall1 = BABYLON.MeshBuilder.CreateBox("box", wallProperties, scene);
+	wall1.material = mat;
 /*
 	// Wall 2
 	wall2 = BABYLON.MeshBuilder.CreateGround("wall2", wallProperties, scene);
