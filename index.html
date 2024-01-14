@@ -71,6 +71,7 @@ let box2Rotation, dice2Val;
 let prevBox1PosX, prevBox1PosY, prevBox1PosZ, prevBox1RotX, prevBox1RotY, prevBox1RotZ;
 let prevBox2PosX, prevBox2PosY, prevBox2PosZ, prevBox2RotX, prevBox2RotY, prevBox2RotZ;
 let done = 0;
+let total;
 
 const roundNearest = (value, nearest) => Math.round(value / nearest) * nearest;
 		
@@ -208,7 +209,8 @@ createScene().then((scene) => {
 				dice2Val = 6;
 			}
 
-			window.alert(dice1Val + "+" + dice2Val + "=" + Number(dice1Val) + Number(dice2Val))
+			total = dice1Val + dice2Val;
+			window.alert(dice1Val + "+" + dice2Val + "=" + total)
 			done++
 		}
 		prevBox1PosX = box1.position.x;
