@@ -175,7 +175,7 @@ createScene().then((scene) => {
 			scene.render();
 		}
 		box1Rotation = box1.rotationQuaternion.toEulerAngles();
-		if(prevPosX === box1.position.x && prevPosY === box1.position.y && prevPosZ === box1.position.z && prevRotX === rotation.x && prevRotY === rotation.y && prevRotZ === rotation.z && done==0) {
+		if(prevPosX === box1.position.x && prevPosY === box1.position.y && prevPosZ === box1.position.z && prevRotX === box1Rotation.x && prevRotY === box1Rotation.y && prevRotZ === box1Rotation.z && done==0) {
 			if(Math.round(box1Rotation.x*100)/100 == -1.57 && Math.round(box1Rotation.z*100)/100 == 0) {
 				window.alert("1");
 				done++
