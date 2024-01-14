@@ -93,6 +93,7 @@ const createScene = async function () {
 	light1.shadowMinZ = 10;
 
 	let light2 = new BABYLON.HemisphericLight("HemiLight", new BABYLON.Vector3(0, 1, 0), scene);
+	light2.intensity = 0.2;
 
 	
 	// Board----------------------------------------------------------------------------------------------------
