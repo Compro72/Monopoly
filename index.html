@@ -66,8 +66,8 @@ const engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, s
 
 let box1;
 let box2;
-let box1rotation;
-let box2rotation;
+let box1Rotation;
+let box2Rotation;
 let prevPosX, prevPosY, prevPosZ, prevRotX, prevRotY, prevRotZ;
 let done = 0;
 
@@ -176,22 +176,22 @@ createScene().then((scene) => {
 		}
 		box1Rotation = box1.rotationQuaternion.toEulerAngles();
 		if(prevPosX === box1.position.x && prevPosY === box1.position.y && prevPosZ === box1.position.z && prevRotX === rotation.x && prevRotY === rotation.y && prevRotZ === rotation.z && done==0) {
-			if(Math.round(box1rotation.x*100)/100 == -1.57 && Math.round(box1rotation.z*100)/100 == 0) {
+			if(Math.round(box1Rotation.x*100)/100 == -1.57 && Math.round(box1Rotation.z*100)/100 == 0) {
 				window.alert("1");
 				done++
-			} else if(Math.round(box1rotation.x*100)/100 == 1.57 && Math.round(box1rotation.z*100)/100 == 0) {
+			} else if(Math.round(box1Rotation.x*100)/100 == 1.57 && Math.round(box1Rotation.z*100)/100 == 0) {
 				window.alert("2");
 				done++
-			} else if(Math.round(box1rotation.x*100)/100 == 0 && Math.round(box1rotation.z*100)/100 == 1.57) {
+			} else if(Math.round(box1Rotation.x*100)/100 == 0 && Math.round(box1Rotation.z*100)/100 == 1.57) {
 				window.alert("3");
 				done++
-			} else if(Math.round(box1rotation.x*100)/100 == 0 && Math.round(box1rotation.z*100)/100 == -1.57) {
+			} else if(Math.round(box1Rotation.x*100)/100 == 0 && Math.round(box1Rotation.z*100)/100 == -1.57) {
 				window.alert("4");
 				done++
-			} else if(Math.round(box1rotation.x*100)/100 == 0 && Math.round(box1rotation.z*100)/100 == 0) {
+			} else if(Math.round(box1Rotation.x*100)/100 == 0 && Math.round(box1Rotation.z*100)/100 == 0) {
 				window.alert("5");
 				done++
-			} else if(Math.round(box1rotation.x*100)/100 == 0 && Math.round(box1rotation.z*100)/100 == 3.14||-3.14) {
+			} else if(Math.round(box1Rotation.x*100)/100 == 0 && Math.round(box1Rotation.z*100)/100 == 3.14||-3.14) {
 				window.alert("6");
 				done++
 			}
@@ -199,9 +199,9 @@ createScene().then((scene) => {
 		prevPosX = box1.position.x;
 		prevPosY = box1.position.y;
 		prevPosZ = box1.position.z;
-		prevRotX = box1rotation.x;
-		prevRotY = box1rotation.y;
-		prevRotZ = box1rotation.z;
+		prevRotX = box1Rotation.x;
+		prevRotY = box1Rotation.y;
+		prevRotZ = box1Rotation.z;
 	});
 });
 
