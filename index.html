@@ -160,11 +160,11 @@ const createScene = async function () {
 	}
 
 	// Wall 1
-	wall1 = BABYLON.MeshBuilder.CreateGround("wall1", wallProperties, scene);
+	wall1 = BABYLON.MeshBuilder.CreateGround("wall", {width:10, height:10});
 	wall1.rotation.x = Math.pi/2;
 	wall1.position.z = -5;
 	wall1.material = groundMat;
-
+/*
 	// Wall 2
 	wall2 = BABYLON.MeshBuilder.CreateGround("wall2", wallProperties, scene);
 	wall2.rotation.z = Math.pi/2;
@@ -179,7 +179,7 @@ const createScene = async function () {
 	wall4 = BABYLON.MeshBuilder.CreateGround("wall4", wallProperties, scene);
 	wall4.rotation.z = Math.pi/2;
 	wall4.position.x = -5;
-
+*/
 
 	// Shadows---------------------------------------------------------------------------------------------------
 	var shadowGenerator = new BABYLON.ShadowGenerator(1024, light1);
