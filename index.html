@@ -105,7 +105,7 @@ const createScene = async function () {
 	
 	// Board----------------------------------------------------------------------------------------------------
 	const groundMat = new BABYLON.StandardMaterial("groundMat");
-	groundMat.diffuseTexture = new BABYLON.Texture("https://i.pinimg.com/originals/ae/cf/f5/aecff5f058348b20be3a41d3bc306800.jpg");
+	groundMat.diffuseTexture = new BABYLON.Texture("Monopoly.jpg");
 
 	let ground = BABYLON.MeshBuilder.CreateGround("ground", {width:10, height:10});
 	ground.material = groundMat;
