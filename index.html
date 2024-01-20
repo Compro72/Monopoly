@@ -134,8 +134,7 @@ const createScene = async function () {
 	// Dice 1
 	dice1 = BABYLON.MeshBuilder.CreateBox("box", diceProperties, scene);
 	dice1.material = mat;
-	dice1.position.y = Math.floor(Math.random() * (5 - 5 + 1)) + 5;
-	dice1.position.y = Math.floor(Math.random() * (10 - 4 + 1)) + 4;
+	dice1.position.y = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
 	dice1.rotation.x = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
 	dice1.rotation.y = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
 	dice1.rotation.z = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
@@ -144,8 +143,7 @@ const createScene = async function () {
 	// Dice 2
 	dice2 = BABYLON.MeshBuilder.CreateBox("box", diceProperties, scene);
 	dice2.material = mat;
-	dice2.position.y = Math.floor(Math.random() * (5 - 5 + 1)) + 5;
-	dice2.position.y = Math.floor(Math.random() * (10 - 4 + 1)) + 4;
+	dice2.position.y = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
 	dice2.rotation.x = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
 	dice2.rotation.y = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
 	dice2.rotation.z = Math.floor(Math.random() * (Math.PI - -Math.PI + 1)) + -Math.PI;
