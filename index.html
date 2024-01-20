@@ -154,28 +154,28 @@ const createScene = async function () {
 	// Walls-----------------------------------------------------------------------------------------------------
 
 	// Wall 1
-	wall1 = BABYLON.MeshBuilder.CreateBox("wall1", {width: 7.4, height: 10, depth: 0.01}, scene);
+	wall1 = BABYLON.MeshBuilder.CreateBox("wall1", {width: 7.4, height: 20, depth: 0.01}, scene);
 	wall1.position.z = 3.7;
-	wall1.position.y = 5;
-	wall1.isVisible = false;
+	wall1.position.y = 10;
+	wall1.isVisible = true;
 
 	// Wall 2
-	wall2 = BABYLON.MeshBuilder.CreateBox("wall2", {width: 0.01, height: 10, depth: 7.4}, scene);
-	wall2.position.y = 5;
+	wall2 = BABYLON.MeshBuilder.CreateBox("wall2", {width: 0.01, height: 20, depth: 7.4}, scene);
+	wall2.position.y = 10;
 	wall2.position.x = 3.7;
-	wall2.isVisible = false;
+	wall2.isVisible = true;
 
 	// Wall 3
-	wall3 = BABYLON.MeshBuilder.CreateBox("wall3", {width: 7.4, height: 10, depth: 0.01}, scene);
-	wall3.position.y = 5;
+	wall3 = BABYLON.MeshBuilder.CreateBox("wall3", {width: 7.4, height: 20, depth: 0.01}, scene);
+	wall3.position.y = 10;
 	wall3.position.z = -3.7;
-	wall3.isVisible = false;
+	wall3.isVisible = true;
 
 	// Wall 4
-	wall4 = BABYLON.MeshBuilder.CreateBox("wall4", {width: 0.01, height: 10, depth: 7.4}, scene);
-	wall4.position.y = 5;
+	wall4 = BABYLON.MeshBuilder.CreateBox("wall4", {width: 0.01, height: 20, depth: 7.4}, scene);
+	wall4.position.y = 10;
 	wall4.position.x = -3.7;
-	wall4.isVisible = false;
+	wall4.isVisible = true;
 
 
 	// Shadows---------------------------------------------------------------------------------------------------
