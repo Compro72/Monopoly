@@ -193,8 +193,8 @@ const createScene = async function () {
    	scene.enablePhysics(new BABYLON.Vector3(0, -9.8, 0), hk);
 	
 	// Create Dice
-	const dice1Aggregate = new BABYLON.PhysicsAggregate(dice1, BABYLON.PhysicsShapeType.BOX, { mass: 1, restitution: 0.01 }, scene);
-	const dice2Aggregate = new BABYLON.PhysicsAggregate(dice2, BABYLON.PhysicsShapeType.BOX, { mass: 1, restitution: 0.01 }, scene);
+	const dice1Aggregate = new BABYLON.PhysicsAggregate(dice1, BABYLON.PhysicsShapeType.BOX, { mass: 1, restitution: 1 }, scene);
+	const dice2Aggregate = new BABYLON.PhysicsAggregate(dice2, BABYLON.PhysicsShapeType.BOX, { mass: 1, restitution: 1 }, scene);
 
 	// Create a static plane shape.
 	const groundAggregate = new BABYLON.PhysicsAggregate(ground, BABYLON.PhysicsShapeType.BOX, { mass: 0 }, scene);
